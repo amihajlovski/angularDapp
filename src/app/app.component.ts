@@ -19,5 +19,8 @@ export class AppComponent {
 
   constructor() {
     this.initializeWeb3();
+    this.web3.eth.getBalance('0x7F3fff8bBE0c07A0c27f3AF62FEAE1AD5c8199FA', (err, res) => {
+      console.log(err, res);
+    })
   }
 }
