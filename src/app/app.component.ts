@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import web3 from 'web3';
+import { BLOCKCHAIN_NETWORK_URL } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +12,9 @@ export class AppComponent {
   web3 = web3;
 
   initializeWeb3() {
-    if (typeof web3 !== 'undefined') {
-      this.web3 = new web3(web3.currentProvider);
-    } else {
-      // set the provider you want from Web3.providers
-      this.web3 = new web3(
-        new web3.providers.HttpProvider('http://localhost:8545'),
-      );
-    }
+    this.web3 = new web3(
+      new web3.providers.HttpProvider(BLOCKCHAIN_NETWORK_URL),
+    );
   }
 
   constructor() {
